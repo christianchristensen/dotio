@@ -1,6 +1,13 @@
 api = 2
 core = 7.x
 
+projects[ctools] = 1.2
+projects[entity] = 1.0-rc3
+projects[rules] = 2.2
+projects[views] = 3.5
+projects[addressfield] = 1.0-beta3
+projects[commerce] = 1.4
+
 ; Dependencies =================================================================
 
 projects[addressfield][type] = module
@@ -75,9 +82,19 @@ projects[commerce_paypal][download][branch] = 7.x-1.x
 
 ; Dough I Owe specific installs
 
-; Theme
 ; Themes
 ; --------
 projects[twitter_bootstrap][type] = theme
 projects[twitter_bootstrap][subdir] = contrib
 projects[twitter_bootstrap][version] = 2.0-beta1
+
+projects[twitter_bootstrap_ui][type] = module
+projects[twitter_bootstrap_ui][subdir] = contrib
+projects[twitter_bootstrap_ui][version] = 2.x-dev
+
+; Libraries
+; NOTE: Only for non-Composer dependencies.
+; ---------
+libraries[twitter_bootstrap][download][type] = file
+libraries[twitter_bootstrap][download][url] = http://twitter.github.com/bootstrap/assets/bootstrap.zip
+libraries[twitter_bootstrap][destination] = libraries
