@@ -24,6 +24,10 @@ projects[entity][download][type] = git
 projects[entity][download][url] = http://git.drupal.org/project/entity.git
 projects[entity][download][branch] = 7.x-1.x
 
+projects[entityreference][type] = module
+projects[entityreference][subdir] = contrib
+projects[entityreference][version] = 1.0-rc5
+
 projects[rules][type] = module
 projects[rules][subdir] = contrib
 projects[rules][version] = 2.x-dev
@@ -54,6 +58,10 @@ projects[commerce_authnet][download][type] = git
 projects[commerce_authnet][download][url] = http://git.drupal.org/project/commerce_authnet.git
 projects[commerce_authnet][download][branch] = 7.x-1.x
 
+projects[commerce_donate][type] = module
+projects[commerce_donate][subdir] = contrib
+projects[commerce_donate][version] = 1.0-beta1
+
 projects[commerce_paypal][type] = module
 projects[commerce_paypal][subdir] = contrib
 projects[commerce_paypal][version] = 1.x-dev
@@ -61,3 +69,11 @@ projects[commerce_paypal][download][type] = git
 projects[commerce_paypal][download][url] = http://git.drupal.org/project/commerce_paypal.git
 projects[commerce_paypal][download][branch] = 7.x-1.x
 
+; Dough I Owe specific installs
+
+; Theme
+; Themes
+; --------
+projects[twitter_bootstrap][type] = theme
+projects[twitter_bootstrap][subdir] = contrib
+projects[twitter_bootstrap][version] = 2.0-beta1
