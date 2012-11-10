@@ -35,6 +35,10 @@ projects[rules][download][type] = git
 projects[rules][download][url] = http://git.drupal.org/project/rules.git
 projects[rules][download][branch] = 7.x-2.x
 
+projects[select_or_other][type] = module
+projects[select_or_other][subdir] = contrib
+projects[select_or_other][version] = 2.15
+
 projects[views][type] = module
 projects[views][subdir] = contrib
 projects[views][version] = 3.x-dev

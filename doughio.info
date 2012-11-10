@@ -43,6 +43,7 @@ dependencies[] = entity
 dependencies[] = entity_token
 dependencies[] = rules
 dependencies[] = rules_admin
+dependencies[] = select_or_other
 dependencies[] = views
 dependencies[] = views_ui
 
