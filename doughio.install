@@ -15,7 +15,7 @@ define('KICKSTART_ADMIN_THEME', 'seven');
  *
  * Perform actions to set up the site for this profile.
  */
-function commerce_kickstart_install() {
+function doughio_install() {
   // Add text formats.
   $filtered_html_format = array(
     'format' => 'filtered_html',
@@ -440,13 +440,13 @@ function commerce_kickstart_install() {
 
   // Perform additional non-standard installation configuration of the Commerce
   // modules and components.
-  _commerce_kickstart_install();
+  _doughio_install();
 }
 
 /**
  * Performs additional configuration for Drupal Commerce modules and components.
  */
-function _commerce_kickstart_install() {
+function _doughio_install() {
   // Enable Commerce blocks.
   $default_theme = variable_get('theme_default', KICKSTART_DEFAULT_THEME);
   $admin_theme = KICKSTART_ADMIN_THEME;
@@ -469,7 +469,7 @@ function _commerce_kickstart_install() {
   $query->execute();
 
   // Add an image field to the default product type.
-  _commerce_kickstart_create_product_image_field('commerce_product', 'product');
+  _doughio_create_product_image_field('commerce_product', 'product');
 
   // Insert a product display node type into the database.
   $types = array(
@@ -495,7 +495,7 @@ function _commerce_kickstart_install() {
   variable_set('node_submitted_product_display', FALSE);
 
   // Add the product reference field to our product display node type.
-  _commerce_kickstart_create_product_reference('node', 'product_display');
+  _doughio_create_product_reference('node', 'product_display');
 
   // Give checkout access to anonymous and authenticated users.
   user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access checkout'));

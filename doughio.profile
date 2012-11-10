@@ -5,7 +5,7 @@
  *
  * Allows the profile to alter the site configuration form.
  */
-function commerce_kickstart_form_install_configure_form_alter(&$form, $form_state) {
+function doughio_form_install_configure_form_alter(&$form, $form_state) {
   // Set a default name for the dev site.
   $form['site_information']['site_name']['#default_value'] = t('Dough I Owe');
 
@@ -16,11 +16,11 @@ function commerce_kickstart_form_install_configure_form_alter(&$form, $form_stat
 /**
  * Implements hook_install_tasks().
  */
-function commerce_kickstart_install_tasks() {
+function doughio_install_tasks() {
   $tasks = array();
 
   // Add a page allowing the user to indicate they'd like to install demo content.
-  $tasks['commerce_kickstart_example_store_form'] = array(
+  $tasks['doughio_example_store_form'] = array(
     'display_name' => st('Example store'),
     'type' => 'form',
   );
@@ -32,7 +32,7 @@ function commerce_kickstart_install_tasks() {
  * Task callback: returns the form allowing the user to add example store
  * content on install.
  */
-function commerce_kickstart_example_store_form() {
+function doughio_example_store_form() {
   drupal_set_title(st('Example store content'));
 
   // Prepare all the options for example content.
@@ -62,7 +62,7 @@ function commerce_kickstart_example_store_form() {
 /**
  * Submit callback: creates the requested example content.
  */
-function commerce_kickstart_example_store_form_submit(&$form, &$form_state) {
+function doughio_example_store_form_submit(&$form, &$form_state) {
   $example_content = $form_state['values']['example_content'];
   $created_products = array();
   $created_nodes = array();
@@ -120,7 +120,7 @@ function commerce_kickstart_example_store_form_submit(&$form, &$form_state) {
  * @todo This function is currently unused but should be added in as an option
  * for example content creation.
  */
-function _commerce_kickstart_create_example_catalog() {
+function _doughio_create_example_catalog() {
   // Create a default Catalog vocabulary for the Product display node type.
   $description = st('Describes a hierarchy for the product catalog.');
   $vocabulary = (object) array(
@@ -162,7 +162,7 @@ function _commerce_kickstart_create_example_catalog() {
 /**
  * Creates an image field on the specified entity bundle.
  */
-function _commerce_kickstart_create_product_image_field($entity_type, $bundle) {
+function _doughio_create_product_image_field($entity_type, $bundle) {
   // Add a default image field to the specified product type.
   $instance = array(
     'field_name' => 'field_image',
@@ -236,7 +236,7 @@ function _commerce_kickstart_create_product_image_field($entity_type, $bundle) {
 /**
  * Creates a product reference field on the specified entity bundle.
  */
-function _commerce_kickstart_create_product_reference($entity_type, $bundle, $field_name = 'field_product') {
+function _doughio_create_product_reference($entity_type, $bundle, $field_name = 'field_product') {
   // Add a product reference field to the Product display node type.
   $field = array(
     'field_name' => $field_name,
@@ -279,13 +279,13 @@ function _commerce_kickstart_create_product_reference($entity_type, $bundle, $fi
 /**
  * Implements hook_update_projects_alter().
  */
-function commerce_kickstart_update_projects_alter(&$projects) {
+function doughio_update_projects_alter(&$projects) {
   // Enable update status for the Commerce Kickstart profile.
   $modules = system_rebuild_module_data();
   // The module object is shared in the request, so we need to clone it here.
-  $kickstart = clone $modules['commerce_kickstart'];
+  $kickstart = clone $modules['doughio'];
   $kickstart->info['hidden'] = FALSE;
-  _update_process_info_list($projects, array('commerce_kickstart' => $kickstart), 'module', TRUE);
+  _update_process_info_list($projects, array('doughio' => $kickstart), 'module', TRUE);
 }
 
 /**
@@ -295,9 +295,9 @@ function commerce_kickstart_update_projects_alter(&$projects) {
  * if they have not been updated manually. In addition, we only hide security
  * issues if the distribution itself has not been updated.
  */
-function commerce_kickstart_update_status_alter(&$projects) {
-  $distribution_secure = !in_array($projects['commerce_kickstart']['status'], array(UPDATE_NOT_SECURE, UPDATE_REVOKED, UPDATE_NOT_SUPPORTED));
-  $make_filepath = drupal_get_path('module', 'commerce_kickstart') . '/drupal-org.make';
+function doughio_update_status_alter(&$projects) {
+  $distribution_secure = !in_array($projects['doughio']['status'], array(UPDATE_NOT_SECURE, UPDATE_REVOKED, UPDATE_NOT_SUPPORTED));
+  $make_filepath = drupal_get_path('module', 'doughio') . '/drupal-org.make';
   if (!file_exists($make_filepath)) {
     return;
   }
@@ -316,7 +316,7 @@ function commerce_kickstart_update_status_alter(&$projects) {
 
     // Current version matches the version we shipped, remove it from the list.
     if (DRUPAL_CORE_COMPATIBILITY . '-' . $make_project_version == $project_info['info']['version']) {
-      $projects['commerce_kickstart']['includes'][$project_info['name']] = $project_info['info']['name'];
+      $projects['doughio']['includes'][$project_info['name']] = $project_info['info']['name'];
       unset($projects[$project_name]);
     }
   }
