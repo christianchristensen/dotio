@@ -90,7 +90,6 @@ projects[libraries][version] = 2.0
 ; Themes
 ; --------
 projects[twitter_bootstrap][type] = theme
-projects[twitter_bootstrap][subdir] = contrib
 projects[twitter_bootstrap][version] = 2.0-beta1
 
 projects[twitter_bootstrap_ui][type] = module
