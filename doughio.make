@@ -83,7 +83,9 @@ projects[commerce_paypal][download][branch] = 7.x-1.x
 ; Dough I Owe specific installs
 
 projects[libraries][type] = module
-projects[Libraries][subdir] = contrib
+projects[libraries][subdir] = contrib
+projects[libraries][version] = 2.0
+
 
 ; Themes
 ; --------
